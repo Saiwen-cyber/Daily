@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config>
+	<className>design_pattern.lab1.abstractfactory.TCLEletricFactory</className>
+</config>

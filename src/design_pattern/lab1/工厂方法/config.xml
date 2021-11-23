@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <className>design_pattern.lab1.工厂方法.ManFactory</className>
+</config>
