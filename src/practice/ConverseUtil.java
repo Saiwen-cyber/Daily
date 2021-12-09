@@ -44,7 +44,6 @@ public abstract class ConverseUtil {
             }
             j = j+4;
         }
-
         return rechars;
     }
 }

@@ -9,10 +9,12 @@ import java.util.List;
 public class ChConverse extends ConverseUtil{
     @Override
     public List<char[]> converse(Object obj) {
-        char ch = (char)obj;
-        int num = DBUtils.selectAscii(ch);
+        char ch = ((String)obj).charAt(0);
         List<char[]> list = new ArrayList<char[]>();
-        list = new IntConverse().converse(num);
+        char[] binNum = IntConverse.bin((int) ch,8);
+        char[] hexNum = this.hex(binNum,2);
+        list.add(binNum);
+        list.add(hexNum);
         return list;
     }
 }
