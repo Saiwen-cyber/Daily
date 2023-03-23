@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第三题-201931106237-房哲</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+<select name="selectProvinces" id="selectProvinces">
+    <option value="0">请选择</option>
+    <option value="1">河北省</option>
+    <option value="2">辽宁省</option>
+    <option value="3">山东省</option>
+</select>
+<select name="selectedCity" id="selectCities">
+    <option value='0'>请选择</option>
+</select>
+<script>
+    var cities=[["石家庄","邯郸","唐山","张家口","廊坊"],
+                ["沈阳","大连","鞍山","抚顺","丹东"],
+                ["济南","青岛","淄博","枣庄","滨州"]];
+
+    $("#selectProvinces").change(function(){
+        $("#selectCities").empty();
+        var index=$("#selectProvinces").val();
+        var init="<option value='0'>请选择</option>";
+        $("#selectCities").append(init);
+        for(i=0;i<cities[index-1].length;i++){
+            var myoption="<option>"+cities[index-1][i]+"</option>";
+            $("#selectCities").append(myoption);
+        }
+    });
+</script>
+</body>
+</html>

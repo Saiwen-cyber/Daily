@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Second1</title>
+    <style>
+        *{
+            padding: 0;
+            margin:0;
+        }
+        #father{
+            margin-top:20px;
+        }
+        .firstChild{
+            margin: 0 auto;
+            width: 860px;
+            height: 130px;
+            border-top: 2px solid #cccccc;
+            /*clear: left;*/
+            overflow: hidden;/*两种清除浮动的方法*/
+        }
+        .firstChild:hover{
+            background-color: #f8f8f8;
+        }
+        .part1{
+            float: left;
+        }
+        .part2{
+            float: left;
+            padding: 15px;
+        }
+        img{
+            height: 100px;
+            margin: 15px;
+        }
+        ul{
+            list-style: none;
+        }
+        li {
+            display: inline-block;
+        }
+        ul .styleA{
+            font-size:16px;
+            color: #cccc00;
+            line-height: 60px;
+        }
+        ul .styleB{
+            font-size: 14px;
+            color: #999;
+            background-color: #eee;
+        }
+        p{
+            line-height: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="father">
+    <div class="firstChild">
+        <div class="part1"><img src="images/4.jpg" alt=""></div>
+
+        <div class="part2">
+            <span style="font-size: 20px;font-family: SimHei;">不只有看肤色挑唇色 选对口红衣服更美</span>
+            <ul>
+                <li class="styleA">标签</li>
+                <li class="styleB">唇膏</li>
+                <li class="styleB">衣服</li>
+                <li class="styleB">粉色</li>
+                <li class="styleB">化妆</li>
+                <li class="styleB">美容美体</li>
+            </ul>
+            <p>
+                <span style="border: 1px solid #666;border-radius:25px;color: #999;font-size: 14px">&nbsp&nbsp悦己self&nbsp&nbsp</span>
+                <span style="font-size: 14px; color:#999">2016-10-18</span>
+            </p>
+        </div>
+    </div>
+    <div class="firstChild">
+        <div class="part1"><img src="images/5.jpg" alt=""></div>
+        <div class="part2">
+            <span style="font-size: 20px;font-family: SimHei;">学画红唇妆 让你的女王范分分钟秒杀路人</span>
+            <ul>
+                <li class="styleA">标签</li>
+                <li class="styleB">唇膏</li>
+                <li class="styleB">衣服</li>
+                <li class="styleB">粉色</li>
+                <li class="styleB">化妆</li>
+                <li class="styleB">美容美体</li>
+            </ul>
+            <p>
+                <span style="border: 1px solid #666;border-radius:25px;color: #999;font-size: 14px">&nbsp&nbsp毛戈平形象艺术学校&nbsp&nbsp</span>
+                <span style="font-size: 14px; color:#999">2016-10-18</span>
+            </p>
+        </div>
+    </div>
+    <div class="firstChild">
+        <div class="part1"><img src="images/6.jpg" alt=""></div>
+        <div class="part2">
+            <span style="font-size: 20px;font-family: SimHei;">无数次给国外博主跪了 把自己的脸画成动漫人物好逼真</span>
+            <ul>
+                <li class="styleA">标签</li>
+                <li class="styleB">美容美体</li>
+            </ul>
+            <p>
+                <span style="border: 1px solid #666;border-radius:25px;color: #999;font-size: 14px">&nbsp&nbsp八公举&nbsp&nbsp</span>
+                <span style="font-size: 14px; color:#999">2016-10-18</span>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

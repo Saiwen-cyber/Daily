@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第四题-201931106237-房哲</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style>
+        #paraNum1{
+            width:600px;
+            height: 1000px;
+            margin: 0 auto;
+        }
+        #form{
+            width: 600px;
+            height: 120px;
+            border: 2px solid #999;
+            padding: 10px;
+        }
+        p{
+            line-height: 60px;
+            float: right;
+        }
+        #tableList{
+            border: 1px solid #000;
+            border-collapse: collapse;
+            width: 600px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        th,td{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="paraNum1">
+    <div id="form">
+        <input hidden id="th_delId" name="th_delId">
+        学号:<label for="id"></label><input type="text" id="id" name="id">
+        姓名:<label for="name"></label><input type="text" id="name" name="name"><br><br>
+        专业:<input type="text" id="major" name="major">
+        <p><input type="button" id="btn" name="btn" value="保存"></p>
+    </div>
+    <table id="tableList">
+        <tr>
+            <th class="th_delId">主键</th>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>专业</th>
+            <th></th>
+        </tr>
+    </table>
+</div>
+<script>
+    $(function(){
+        $("body").ready(function(){
+            $.ajax({
+                type:"GET",
+                url:"http://120.46.143.125:8080/stu/list",
+                dataType:"json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log(data);
+                    for(var i=0;i<data.data.length;i++)
+                    {
+                        var delId =data.data[i].stuId;
+                        var id=data.data[i].stuNo;
+                        var name=data.data[i].stuName;
+                        var major=data.data[i].stuMajor;
+                        var mytr="<tr><td class=\"th_delId\">"+delId+"</td><td>"+id+"</td><td>"+name+"</td><td>"+major
+                            +"</td><td><a href='#' value='udt'>修改</a>|<a href='#' value='dlt'>删除</a></td></tr>";
+                        $("table").append(mytr);
+                        $("th.th_delId").hide();
+                        $("td.th_delId").hide();
+                    }
+                },
+                error: function () {}
+            });
+        });
+        $("#btn").click(function(){
+            $("#btn").click(function(){
+                $.post(
+                    "http://120.46.143.125:8080/stu/insertStu",
+                    {"stuNo":$("#id").val(), "stuName":$("#name").val(), "stuMajor":$("#major").val()},
+                    function (data) {
+                        data = $.parseJSON(data);
+                        if(data.code === 200){
+                            window.location.reload();
+                        }else{
+                            alert(data.msg);
+                        }
+                    }
+                )
+            });
+        });
+
+
+        $(document).on("click","a:contains('删除')",function(){
+            var deleteId=$(this).parents("tr").find(".th_delId").text();
+            $.post(
+                "http://120.46.143.125:8080/stu/deleteStu/"+deleteId,
+                function (data) {
+                    if(data.code===200){
+                        window.location.reload();
+                    }
+                    else if(data.code===999){
+                        alert(data.msg);
+                    }
+                }
+            )
+        });
+        $(document).on("click","a:contains('修改')",function(){
+            // 获取当前行数据，并显示在上方输入框中
+            var deleteId=$(this).parents("tr").find(".th_delId").text();
+            var upId=$(this).parents("tr").find("td:eq(1)").text();
+            var upName=$(this).parents("tr").find("td:eq(2)").text();
+            var upMajor=$(this).parents("tr").find("td:eq(3)").text();
+
+            $("#th_delId").val(deleteId)
+            $("#id").val(upId);
+            $("#name").val(upName);
+            $("#major").val(upMajor);
+            // 重新输入内容后更新保存“保存”。
+
+            $("#btn").click(function(){
+                var student=
+                $.post(
+                    "http://120.46.143.125:8080/stu/updateStu",
+                    {
+                        "stuId":$("#th_delId").val(),
+                        "stuNo":$("#id").val(),
+                        "stuName":$("#name").val(),
+                        "stuMajor":$("#major").val(),
+                    },
+                    function (data) {
+                        data = $.parseJSON(data);
+                        if(data.code === 200){
+                            window.location.reload();
+                        }else{
+                            alert(data.msg);
+                        }
+                    }
+                )
+            });
+        });
+    });
+</script>
+</body>
+</html>

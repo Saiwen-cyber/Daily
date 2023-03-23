@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第四题-201931106237-房哲</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style>
+        #submitForm{
+            width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        table{
+            width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            border-collapse: collapse;
+            border:1px solid #000 ;
+        }
+        td,th{
+            border:1px solid #000 ;
+        }
+        input{
+            border: 1px solid rgb(156,179,201);
+        }
+    </style>
+</head>
+<body>
+<div id="submitForm">
+    <h2>添加新员工</h2>
+    name:<label for="name"></label><input type="text" name="name" id="name">
+    email:<label for="email"></label><input type="text" name="email" id="email">
+    salary:<label for="salary"></label><input type="text" name="salary" id="salary"><br><br>
+    <input type="button" name="button" id="btn" value="submit">
+    <hr>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th> </th>
+        </tr>
+    </table>
+</div>
+<script>
+    $(function(){
+        $("#btn").click(function(){
+            var content="<tr><td>"+$('#name').val()+"</td><td>"+$('#email').val()
+                +"</td><td>"+$('#salary').val()+"</td><td><a href='#'>Delete</a></td></tr>";
+            $("table").append(content);
+            $("a").click(function(){
+                $(this).parents("tr").remove();
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

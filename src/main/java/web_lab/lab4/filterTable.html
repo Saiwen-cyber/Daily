@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第二题-201931106237-房哲</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+    <!-- 奇数行背景色：#FF6500；偶数行背景色：#FFFFEE;选中行：#FF6500
+    选中行时，设置单选框选中状态 -->
+    <style>
+        .odd{
+            background-color: #FFF38F;
+        }
+        .even{
+            background-color:#FFFFEE;
+        }
+        .selected{
+            background-color: #FF6500;
+        }
+        #tableList{
+            width: 500px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+        td,th{
+            border:1px solid #000;
+            text-align: center;
+        }
+        #box{
+            width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    查询：<label>
+    <input type="text">
+</label><br><br>
+    <table id="tableList">
+        <tr>
+            <th></th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>暂住地</th>
+        </tr>
+        <tr>
+            <td><label>
+                <input type="radio" name="optional">
+            </label></td>
+            <td>张三</td>
+            <td>男</td>
+            <td>四川成都</td>
+        </tr>
+        <tr>
+            <td><label>
+                <input type="radio" name="optional">
+            </label></td>
+            <td>李四</td>
+            <td>女</td>
+            <td>四川绵阳</td>
+
+        </tr>
+        <tr>
+            <td><label>
+                <input type="radio" name="optional">
+            </label></td>
+            <td>王五</td>
+            <td>男</td>
+            <td>四川南充</td>
+        </tr>
+        <tr>
+            <td><label>
+                <input type="radio" name="optional">
+            </label></td>
+            <td>赵六</td>
+            <td>男</td>
+            <td>四川自贡</td>
+        </tr>
+        <tr>
+            <td><label>
+                <input type="radio" name="optional">
+            </label></td>
+            <td>陈勇</td>
+            <td>男</td>
+            <td>四川德阳</td>
+        </tr>
+        <tr>
+            <td><label>
+                <input type="radio" name="optional">
+            </label></td>
+            <td>罗梅</td>
+            <td>女</td>
+            <td>四川宜宾</td>
+        </tr>
+    </table>
+</div>
+<script>
+    $(function(){
+        $("tr:not(:first):odd").addClass("odd");
+        $("tr:not(:first):even").addClass("even");
+        $("tr:not(:first)").click(function(){
+            $(this).addClass("selected").siblings().removeClass("selected");
+            $(this).find("input").prop("checked","true");
+
+        });
+        $("input").keyup(function(){
+            $("tr:not(:first)").hide().filter(":contains("+$(this).val()+")").show();
+        });
+    });
+</script>
+</body>
+</html>

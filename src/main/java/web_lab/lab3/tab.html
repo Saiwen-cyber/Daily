@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 500px;
+            margin: 0 auto;
+        }
+        #list-tab{
+            overflow: hidden;
+        }
+        span {
+            display: block;
+            float: left;
+            width: 166px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        span:hover {
+            background-color: #aaaaaa;
+        }
+
+        .active-tab {
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            border-bottom: 1px dashed #cccccc;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="list-tab">
+        <span class="active-tab">热门排行</span><span>美图速递</span><span>前沿科技</span>
+    </div>
+    <div id="list-part">
+        <ul class="part">
+            <li>习近平出席推进“—带一路"建设工作5周年座谈会</li>
+            <li>中共时隔近三年再修党纪条例这些高压线不能碰</li>
+            <li>全国高中2019年秋季起分步实施新课程使用新教材</li>
+            <li>个税法修正案草案将二审起征点会否超5000元?</li>
+        </ul>
+        <ul class="part">
+            <li>鹅教官、羊陪练.…...这所中学养的动物成了“网红”</li>
+            <li>最伤身体的10个生活习惯，一定要避开</li>
+            <li>12岁孩子带着父亲去西藏吃住行自己拿主意</li>
+            <li>16岁男孩暑假干了俩月工地，练出满身肌肉只为赚学费</li>
+        </ul>
+
+        <ul class="part">
+            <li>前沿科技</li>
+            <li>前沿科技</li>
+            <li>前沿科技</li>
+            <li>前沿科技</li>
+        </ul>
+        <script>
+            window.onload = function () {
+                var navigation = document.getElementById('list-tab');
+                var oNavigation = navigation.getElementsByTagName('span');
+
+                var part = document.getElementById('list-part')
+                var oPart = part.getElementsByClassName('part');
+                for (var i = 1; i < oNavigation.length; i++) {
+                    oNavigation[i].className = '';
+                    oPart[i].style.display = 'none';
+                }
+                for (var i = 0; i < oNavigation.length; i++) {
+                    oNavigation[i].index = i;
+                    oNavigation[i].onmouseenter = function () {
+                        for (var i = 0; i < oNavigation.length; i++) {
+                            oNavigation[i].className = '';
+                            oPart[i].style.display = 'none'
+                        }
+                        this.className = 'active-tab';
+                        oPart[this.index].style.display = 'block'
+                    }
+                }
+            }
+        </script>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <style>
+        div {
+            margin: 0 auto;
+        }
+
+        form {
+            width: 248px;
+            height: 220px;
+            background-color: #00CCFF;
+            padding: 30px 40px;
+            border: 1px solid #f5eae8;
+            text-align: center;
+            margin: 0 auto;
+            /*line-height: 80px;*/
+        }
+
+        input {
+            width: 200px;
+            height: 38px;
+            border: 1px solid #ccc;
+            margin-bottom: 3px;
+        }
+
+        .submitClass {
+            width: 255px;
+            height: 44px;
+            margin: 25px auto;
+            background-color: #0099CC;
+            -webkit-text-fill-color: white;
+        }
+
+        .spanClass {
+            height: 40px;
+        }
+
+        span {
+            color: #E0222D;
+            margin: 1px;
+        }
+
+        a {
+            font-size: 10px;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .part {
+            width: 328px;
+            height: 25px;
+            background-color: #0099CC;
+            border-top: 1px solid #dddddd;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="part">注册</div>
+    <form>
+        <div>
+            <input id="username" name="username" autocomplete="off" type="text" placeholder="请输入您的账号"
+                   onblur="checkForName('username','infoUserName')" onfocus="clearInfo('infoUserName')">
+        </div>
+        <div class="spanClass"><span id="infoUserName"></span></div>
+
+        <div>
+            <input id="password" name="password" type="password" placeholder="请输入您的密码"
+                   onblur="checkForPwd('password','infoPwd')" onfocus="clearInfo('infoPwd')">
+        </div>
+        <div><span id="infoPwd"></span></div>
+        <div><input class="submitClass" type="submit" value="提交"></div>
+    </form>
+</div>
+<script>
+    // 验证用户名
+    function checkForName(id, infoId) {
+        var userNameWord = document.getElementById(id).value;
+        var keycode = userNameWord.charCodeAt(0);
+        if (keycode < 65 || (keycode > 90 && keycode < 97) || keycode > 122) {
+            setInfo(infoId, '用户必须以英文字母开头！');
+            return false;
+        }
+        else if( userNameWord.length<6||userNameWord.length>18){
+            setInfo(infoId, '用户名长度必须为6-18位！');
+            return false;
+        }
+        return true;
+    }
+
+    //设置提示信息
+    function setInfo(id, info) {
+        document.getElementById(id).innerText = info;
+    }
+
+    function clearInfo(id) {
+        document.getElementById(id).innerText = " ";
+    }
+
+    // 验证密码
+    function checkForPwd(id,infoId) {
+        var pwdWord = document.getElementById(id).value;
+        if(pwdWord.length<6 && pwdWord.length>0){
+            setInfo(infoId,'密码长度小于6位！');
+            return false;
+        }
+        return true;
+    }
+
+    //  校验表单元素
+    function check() {
+        if (checkForName('username', 'infoUserName')&checkForPwd('password','infoPwd')) {
+            return true;
+        }
+        return false;
+    }
+</script>
+</body>
+</html>

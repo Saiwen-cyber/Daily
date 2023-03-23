@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Content</title>
+    <style>
+        div{
+            width: 600px;
+        }
+        textarea{
+            width: 100%;
+            resize: none;
+            padding: 0;
+            margin: 0;
+        }
+        button{
+            display: block;
+            width: 100px;
+            height: 25px;
+            border-radius: 1px;
+            border: 1px solid ;
+            margin-left: auto;
+            margin-top: -4px;
+        }
+        ul{
+            line-height: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        li{
+            border-bottom: 1px solid ;
+        }
+        li a{
+            float: right;
+            text-decoration: none;
+        }
+        input{
+            width:600px;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+    <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+    <button>提交</button>
+    <ul></ul>
+</div>
+<script>
+    var text = document.querySelector('textarea');
+    var btn = document.querySelector('button');
+    var ul = document.querySelector('ul');
+
+    function clearInput(){
+        document.getElementById("textarea").value="";
+    }
+
+    btn.onclick = function () {
+        if(text.value === ''){
+            return false;
+        }
+        else{
+            var li = document.createElement('li');
+            li.innerHTML ='&nbsp;&nbsp;&nbsp;&nbsp'+text.value
+                +'<a href="javascript:;" rel="external nofollow" style="background-color: #3374c3 ">删除</a>';
+            ul.appendChild(li);
+        }
+        clearInput();
+        var cur = document.querySelectorAll('a');
+        for (var i =0;i<cur.length;i++){
+            cur[i].onclick = function () {
+                ul.removeChild(this.parentNode);
+            }
+        }
+    }
+</script>
+</body>
+</html>

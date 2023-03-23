@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Second3</title>
+    <style>
+        div{
+            margin: 0 auto;
+        }
+        form{
+            width: 248px;
+            height: 220px;
+            background-color: #f5eae8;
+            padding: 30px 40px;
+            border: 1px solid #f5eae8;
+            text-align: center;
+            margin:0 auto;
+        }
+        input{
+            width: 200px;
+            height: 38px;
+            border: 1px solid #ccc;
+            margin-bottom: 30px;
+        }
+        input.username{
+            text-indent: 50px;
+            background: url("images/zhanghao.jpg") 0 -1px no-repeat;
+        }
+        input.password{
+            text-indent: 50px;
+            background: url("images/mima.jpg") 0 -1px no-repeat;
+        }
+        .checkbox{
+            width: 10px;
+            height: 10px;
+            margin:0;
+        }
+        .submitType{
+            width: 255px;
+            height: 44px;
+            margin:25px auto;
+            background-color: #da2836;
+            -webkit-text-fill-color:white;
+        }
+        span{
+            font-size: 10px;
+            margin-right: 10px;
+        }
+        a{
+            font-size: 10px;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+        .part{
+            width: 330px;
+            height: 145px;
+            background-color: #f5eae8;
+            border-top: 1px solid #dddddd;
+            text-align: center;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form>
+        <input class="username" name="name" autocomplete="off" type="text" placeholder="用户名/邮箱地址/手机号">
+        <input class="password" name="pass" type="password" placeholder="填写密码">
+        <div>
+            <label><input class="checkbox" type="checkbox" name="radio" ></label>
+            <span>记住密码</span><a href="#" style="color: #757575">欢迎注册&nbsp&nbsp忘记密码</a>
+         </div>
+        <div>
+            <input class="submitType" type="submit" value="登录">
+        </div>
+    </form>
+        <div class="part">
+            <span>合作网站账号登录:<img src="images/weixin.png"><img src="images/qqlogin.png"><img src="images/taobao.png"></span>
+        </div>
+</div>
+</body>
+</html>
