@@ -2,9 +2,9 @@ package coding.package2023.package202304;
 
 import java.util.Stack;
 
-class Solution {
+public class Solution0418 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution0418 solution = new Solution0418();
         solution.addMinimum("b");
     }
 
